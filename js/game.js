@@ -29,12 +29,12 @@ var INV_MAX_FPS = 1/60;
 var frameDelta = 0;
 
 // STATS
-//var stats = new Stats();
-//$('#stats').append(stats.domElement);
+var stats = new Stats();
+$('#stats').append(stats.domElement);
 
 var modelLoader = new ModelLoader();
 var soundLoader = new SoundLoader();
-//var player;
+var player;
 var world;
 
 var net = new Net();
@@ -46,7 +46,7 @@ var net = new Net();
 net.Initialize("http://localhost:8080");
 
 
-//$('#song').prop("volume", 0.8);
+$('#song').prop("volume", 0.8);
 
 ConsoleMsg("Welcome to Wizard Warz [BETA]!", "#00FFFF");
 
@@ -173,11 +173,11 @@ function init()  {
     camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
 
     scene.add(camera);
-    // camera.position.set(0,1000,600);
+     camera.position.set(0,1000,600);
     camera.lookAt(scene.position);
 
     renderer = new THREE.WebGLRenderer( {antialias: true} );
-    //renderer.setSize($('#container').width(), $('#container').height());
+    renderer.setSize($('#container').width(), $('#container').height());
     renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     container = document.getElementById('container');
     container.innerHTML = '';
@@ -185,27 +185,27 @@ function init()  {
 
     // EVENTS
     THREEx.WindowResize(renderer, camera);
-    //    THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+        THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
 
     // AXIS HELPER
-    /*
+    
        var axis = new THREE.AxisHelper(600);
        axis.position.set(0, 100, 0);
        scene.add(axis);
-       */
+       
 
 
     scene.fog = new THREE.FogExp2( 0x000000, 0.00025 );
     renderer.setClearColor(0x000000, 1);
 
     renderer.shadowMapEnabled = true;
-    //    renderer.shadowMapSoft = true;
+        renderer.shadowMapSoft = true;
 
 
     // Sun
     sun = new Sun();
     sun.Create(0,200,0, scene, renderer);
-    //objects.push(sun);
+    objects.push(sun);
 
     // Water
     var water = new Water();
@@ -235,7 +235,7 @@ function InitiateNet() {
     net.send_GetFlowers();
     net.send_GetLamps();
     net.send_GetTowers();
-    //    net.send_GetHouses();
+        net.send_GetHouses();
     net.send_GetSpellBooks();
     net.send_GetHealthPotions();
     net.send_GetPowerPotions();
@@ -345,13 +345,13 @@ function update() {
 
         if(spectate) {
             camera.position.x = Math.floor(Math.cos(time/100) * 2000);
-            //camera.position.y = Math.max(300, Math.floor(Math.cos(time/50) * 1500));
+            camera.position.y = Math.max(300, Math.floor(Math.cos(time/50) * 1500));
             camera.position.z = Math.floor(Math.sin(time/100) * 2000);
             camera.lookAt(new THREE.Vector3(0,0,0));
         }
     }
 
-    //stats.update();
+    stats.update();
 }
 
 function render() {
@@ -362,7 +362,7 @@ function ResetScene() {
     $('#song')[0].play();
     if(net.player != undefined) {
         // TBD: Unlock pointer!
-        //LockPointer(); 
+        LockPointer(); 
         net.player.RemoveBindings();
     }
     ResetHideHud();
