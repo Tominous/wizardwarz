@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-<!--    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="css/pure-min.css">
     <title>Wizard Warz</title>
@@ -46,7 +46,7 @@
       void main() 
       {
       float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 4.0 ); 
-/*      gl_FragColor = vec4( 0.0, 0.273, 0.925, 0.008 ) * intensity; */
+      gl_FragColor = vec4( 0.0, 0.273, 0.925, 0.008 ) * intensity;
       gl_FragColor = vec4(0.573 , 0.225, 0.008, 0.7 ) * intensity;
       }
     </script>
@@ -126,10 +126,10 @@ varying float vAmount;
 
 void main() 
 {
-/*
+
 vec4 water = (smoothstep(0.0, 0.25, vAmount) - smoothstep(0.15, 0.35, vAmount)) * texture2D( oceanTexture, vUV * 10.0 ); 
 vec4 sandy = (smoothstep(0.20, 0.34, vAmount) - smoothstep(0.35, 0.50, vAmount)) * texture2D( sandyTexture, vUV * 10.0 );
-*/
+
 	vec4 water = (smoothstep(0.0, 0.12, vAmount) - smoothstep(0.15, 0.35, vAmount)) * texture2D( oceanTexture, vUV * 10.0 ); 
 	vec4 sandy = (smoothstep(0.15, 0.34, vAmount) - smoothstep(0.35, 0.50, vAmount)) * texture2D( sandyTexture, vUV * 10.0 );
         vec4 grass = (smoothstep(0.30, 0.50, vAmount) - smoothstep(0.70, 0.80, vAmount)) * texture2D( grassTexture, vUV * 10.0 );
@@ -196,16 +196,16 @@ vec4 sandy = (smoothstep(0.20, 0.34, vAmount) - smoothstep(0.35, 0.50, vAmount))
   <body>
 
     <audio id="song" autoplay="autoplay" loop="loop" valume="0.5">
-  <!--    <source src="music/war_in_the_sun.mp3" type="audio/mpeg" volume="0.1"> -->
+      <source src="music/war_in_the_sun.mp3" type="audio/mpeg" volume="0.1">
     </audio>
     <audio id="waves" autoplay="autoplay" loop="loop" valume="0.0">
       <source src="sounds/waves.mp3" type="audio/mpeg" volume="0.0">
     </audio>
 
 <canvas style="display: none; margin-right: 0px; padding-left: 600px;  opacity: 0.5; position: absolute;" id="noise_1" width="300" height="300"></canvas> 
-<!--
+
 <canvas style="margin-right: 0px; padding-left: 600px;  opacity: 0.5; position: absolute;" id="noise_2" width="300" height="300"></canvas>
--->
+
 
 <div style="position: absolute; margin-bottom: 0px;" id="stats"></div>
 
@@ -214,7 +214,7 @@ vec4 sandy = (smoothstep(0.20, 0.34, vAmount) - smoothstep(0.35, 0.50, vAmount))
   <span id="time_left_load" style="width: 100%"></span>
 </div>
 
-<!--<div style="" class="circle-text wizard_font"><div>Power Potions</div></div> -->
+<div style="" class="circle-text wizard_font"><div>Power Potions</div></div>
 
 <div id="avatar" style="display: none;" class="avatar wizard_font">
   <div id="avatar_img"><img src="textures/avatar.png"></img></div>  
@@ -234,7 +234,7 @@ vec4 sandy = (smoothstep(0.20, 0.34, vAmount) - smoothstep(0.35, 0.50, vAmount))
   <span id="health_load_power" style="width: 100%"></span>
 </div>
 
-<!-- <div id="hud" class="hud"> -->
+ <div id="hud" class="hud">
   <div id="item1" style="display: none;" class="inventory item wizard_font">
     <p>[ 1 ]</p>
     <img id="itemimg1"></img>
@@ -260,12 +260,12 @@ vec4 sandy = (smoothstep(0.20, 0.34, vAmount) - smoothstep(0.35, 0.50, vAmount))
     <div id="console_log" disabled></div>
     <input type="text" id="console_msg"></input>
   </div>
-<!-- </div> -->
+ </div>
  <!-- hud -->
  <div id="info" class="info white">
    <p id="spectate" class="wizard_font" style="text-align: right; margin-left: 90%; position: absolute;"><a href="javascript:Spectate();">Spectate</a></p>
    <legend id="logo" class="wizard_font">
-<!--   <img src="images/toad1.png" style="z-index: -10; position: fixed; margin-left: 400px; margin-top: -50px;"></img>-->
+   <img src="images/toad1.png" style="z-index: -10; position: fixed; margin-left: 400px; margin-top: -50px;"></img>
      <font color="#FFF">Wizard</font> Warz
      <p style="font-size: 12px; color: #fff; margin-top: -5px; margin-left: -230px;">Multiplayer Action</p>
    </legend>
@@ -278,7 +278,7 @@ vec4 sandy = (smoothstep(0.20, 0.34, vAmount) - smoothstep(0.35, 0.50, vAmount))
        <li id="m_about" class="menu_item"><a onclick="viewAbout();" href="#">About</a></li>
      </ul>
    </div>
-<!--   <img src="images/ammo.png" style="position: fixed; margin-left: 0px; padding-left: 0px; "></img> -->
+   <img src="images/ammo.png" style="position: fixed; margin-left: 0px; padding-left: 0px; "></img>
 
 <div id="main_window" style="overflow-y: scroll; max-height: 350px;" class="sub_window">
 <!-- content -->
@@ -433,7 +433,7 @@ viewNews();
 
 
 
-<!--
+
 
 
    <div id="loaded" style="display: none;">
@@ -447,7 +447,7 @@ viewNews();
    <img src="images/toad1.png" style=""></img>
    <h1 class="mario_font" id="start" style="display: none;"><a href="javascript:Start();">ENTER GAME</a></h1>
    </div>
--->
+
 
 
  <div id="container"></div>
